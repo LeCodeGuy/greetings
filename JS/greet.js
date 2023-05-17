@@ -5,6 +5,7 @@ let btnGreetElem = document.querySelector(".btnGreet");
 let helloMessageElem = document.querySelector(".helloMessage");
 let radioLangElem = document.getElementsByName("radioLang");
 let greetCount = document.querySelector(".counter");
+let btnClearCountElem = document.querySelector(".btnClearCount");
 
 
 let counter = 0;
@@ -13,6 +14,9 @@ const greetApp = greetMe();
 
 // add event listener for when the 'Greet Me' button is pressed
 btnGreetElem.addEventListener("click", btnGreet_onClick);
+
+// add event listener for when the 'Clear Count' button is pressed
+btnClearCountElem.addEventListener("click", clearCount_onClick);
 
 //check if a value for the counter is stored in localStorage
 if (localStorage['count']){
@@ -23,7 +27,7 @@ if (localStorage['count']){
 };
 
 function btnGreet_onClick () {
-    var name = txtNameElem.value;
+    var name = greetApp.titleCase(txtNameElem.value);
     var languageSelected = "";
     
     // Loop through the radio buttons
@@ -31,6 +35,7 @@ function btnGreet_onClick () {
         if (radioLangElem[i].checked) {
           // Get the value of the selected radio button
           languageSelected=radioLangElem[i].value.toLowerCase();
+          radioLangElem[i].checked = false; //unchecks the radio button
           break; // Exit the loop once the selected radio button is found
         }
     }
@@ -53,4 +58,8 @@ function btnGreet_onClick () {
         txtNameElem.value = "";
     }
     
+}
+
+function clearCount_onClick() {
+    greetApp.clearCount();
 }
