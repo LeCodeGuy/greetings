@@ -30,6 +30,9 @@ function btnGreet_onClick () {
     var name = greetApp.titleCase(txtNameElem.value);
     var languageSelected = "";
     
+    errorMessageElem.innerHTML = "";
+    helloMessageElem.innerHTML = "";
+
     // Loop through the radio buttons
     for (var i = 0; i < radioLangElem.length; i++) {
         if (radioLangElem[i].checked) {
@@ -41,13 +44,7 @@ function btnGreet_onClick () {
     }
     // Check that the form has been completed
     if(name.length === 0 || languageSelected.length === 0){
-        errorMessageElem.innerHTML = "";
-        if(name.length === 0){
-            errorMessageElem.innerHTML = "Please provide a name";
-        }
-        else{
-            errorMessageElem.innerHTML = "Please select a language";
-        }
+        errorMessageElem.innerHTML = greetApp.greet(name,languageSelected)
     }
     else{
         // Update counter
