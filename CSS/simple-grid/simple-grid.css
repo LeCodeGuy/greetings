@@ -6,7 +6,12 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
 
 /* UNIVERSAL */
-
+/* 
+pink #EF476F
+blue #26547C 
+yellow #FFD166
+green #06D6A0
+*/
 html,
 body {
   height: 100%;
@@ -16,14 +21,14 @@ body {
   left: 0;
   top: 0;
   font-size: 100%;
-  background-color: rgb(254,250,224);
+  background-color:#EF476F ;
 }
 
 /* ROOT FONT STYLES */
 
 * {
   font-family: 'Lato', Helvetica, sans-serif;
-  color: rgb(96,108,56);
+  color: #26547C;
   line-height: 1.5;
 }
 
@@ -187,6 +192,14 @@ p {
   .container {
     width: 80%;
   }
+  .form{
+    display:flex;
+    flex-wrap: wrap;
+    margin:0% 10%;
+  }
+  .col-12{
+    padding:0 10% !important;
+  }
 }
 
 @media only screen and (min-width: 45em) {  /* 720px */
@@ -251,82 +264,29 @@ p {
 }
 
 /* ==== MY STYLING ==== */
-
-/* ? NAVIGATION */
-/* Add some basic styles to the navigation bar */
-nav {
-  background-color: rgb(221,161,94);
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-nav a {
-  float: left;
-  
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-nav a:hover {
-  background-color: rgb(188,108,37);
-  color: rgb(40,54,24);
-}
-
-/* Add a dropdown to the navigation bar */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Style the dropdown button */
-.dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-/* Style the dropdown content */
-.dropdown-content {
-  display: none;
+.form{
+  background-color: #06D6A0;
+  max-width: 780px;
+  min-width: 300px;
+  margin: 0 auto;
+  border-radius: 15px;
   position: absolute;
-  background-color: rgb(221,161,94);
-  min-width: 160px;
-  z-index: 1;
+    top: 25%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 }
 
-/* Style the links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  /* color: black; */
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+.content{
+  margin: 0 auto;
+  padding: 0% 5%;
 }
-
-/* Add a hover effect to the dropdown links */
-.dropdown-content a:hover {
-  background-color: rgb(188,108,37);
-  color: rgb(40,54,24);
+.errMessage {
+  display: flex;
+  flex-wrap: wrap;
 }
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* ? PROFILE PHOTO */
-.my-picture {
-    border-radius: 15%;
-    width: 100%;
-    max-width: 190px;
-    min-width: 100px;
-    height: auto;
-    box-shadow: 0px 0px 10px 5px rgb(96,108,56);
+.btn{
+  background-color: #FFD166;
+  border: 0px solid #FFD166;
+  border-radius: 5%;
+  cursor: pointer;
 }
