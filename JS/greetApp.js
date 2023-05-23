@@ -1,33 +1,23 @@
 function greetMe (){
     let message = "";
+    let counter = 0;
     let localStoreVal = JSON.parse(localStorage.getItem('namesGreeted'));
     var namesGreeted = localStoreVal || {};
 
     function greet(userName,language){
-        var regExVal = /^[A-Za-z]+$/
-        //alert();
-        if(regExVal.test(userName)===false){
-            message = "Please provide a name and select a language";
+        
+        switch(language){
+            case "english":
+                message = "Hello, " + userName;
+                break;
+            case "afrikaans":
+                message = "Hallo, " + userName;
+                break;
+            case "isixhosa":
+                message = "Molo, " + userName;
+                break;
         }
-        else if(userName.length === 0){
-            message = "Please provide a name";
-        }
-        else if(language.length === 0){
-           message = "Please select a language";
-        }
-        else{
-            switch(language){
-                case "english":
-                    message = "Hello, " + userName;
-                    break;
-                case "afrikaans":
-                    message = "Hallo, " + userName;
-                    break;
-                case "isixhosa":
-                    message = "Molo, " + userName;
-                    break;
-            }
-        }
+        
         return message;
     }
 
@@ -54,22 +44,57 @@ function greetMe (){
         counter = 0;
         //localStorage['count'] = counter;
         // localStorage['count'] = counter;
+        
         localStorage.clear();
-        location.reload();
+        if (window.location.href.indexOf("greetings/index.html") > -1) {
+            location.reload();
+        }
+    }
+    function checkName(userName,language){
+        var regExVal = /^[A-Za-z|\s|-]+$/
+        //alert();
+        if(userName.length === 0 && language.length === 0){
+            return "Please provide a name and select a language";
+        }        
+        else if(userName.length === 0){
+            return "Please provide a name";
+        }
+        else if(regExVal.test(userName)===false){
+            return "Please provide a valid name";
+        }
+        else if(language.length === 0){
+            return "Please select a language";
+        }
+        else{
+            return "message";
+        }
     }
 
     function titleCase(str) {
-        str = str.toLowerCase().split(' ');
+        //keep track of the original string passed
+        const originalStr = str;
+        const regexHyphen = /-/
+        str = str.toLowerCase().split(/\s|-/);
+
         for (var i = 0; i < str.length; i++) {
           str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
         }
-        return str.join(' ');
+
+        if(regexHyphen.test(originalStr)=== true){
+           str = str.join('-')
+        }
+        else{
+            str = str.join(' ');
+        }
+
+        return str;
       }      
     
     return {
         greet,
         count,
         clearCount,
-        titleCase
+        titleCase,
+        checkName
     };
 }

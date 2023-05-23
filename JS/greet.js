@@ -7,7 +7,6 @@ let radioLangElem = document.getElementsByName("radioLang");
 let greetCount = document.querySelector(".counter");
 let btnClearCountElem = document.querySelector(".btnClearCount");
 
-let counter = 0;
 // instantiate factory function
 const greetApp = greetMe();
 
@@ -19,10 +18,8 @@ btnClearCountElem.addEventListener("click", clearCount_onClick);
 
 //check if a value for the counter is stored in localStorage
 if (localStorage['count']){
-    // ensure counter is a number
-    counter = Number(localStorage['count']);
-
-    greetCount.innerHTML = counter;
+    // ensure counter is a number and set it to the innerHTML
+    greetCount.innerHTML = Number(localStorage['count']);
 };
 
 function btnGreet_onClick () {
@@ -42,8 +39,8 @@ function btnGreet_onClick () {
         }
     }
     // Check that the form has been completed
-    if(name.length === 0 || languageSelected.length === 0){
-        errorMessageElem.innerHTML = greetApp.greet(name,languageSelected);
+    if(greetApp.checkName(name,languageSelected)!="message"){
+        errorMessageElem.innerHTML = greetApp.checkName(name,languageSelected);
         
         // Add a class to trigger the fade-out effect
         errorMessageElem.classList.add('fade-out');

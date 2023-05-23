@@ -289,4 +289,5 @@ p {
   border: 0px solid #FFD166;
   border-radius: 5%;
   cursor: pointer;
+  font-weight: bold;
 }

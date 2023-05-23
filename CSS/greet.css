@@ -10,3 +10,8 @@
   .fade-out.fade-out-hidden {
     opacity: 0;
   }
+
+  .counter {
+    padding: 0px 0px 0px 10px;
+    font-weight: bold;
+  }
