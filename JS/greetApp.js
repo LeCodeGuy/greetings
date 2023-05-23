@@ -41,15 +41,21 @@ function greetMe (){
         return counter;
     }
     
-    function clearCount() {        
-        localStorage.clear();
-        if (window.location.href.indexOf("greetings/index.html") > -1) {
-            location.reload();
+    function clearCount() {    
+        let popUpMessage = "You are about to reset the app!";
+        
+        if (confirm(popUpMessage) == true) {
+            localStorage.clear();
+            if (window.location.href.indexOf("greetings/index.html") > -1) {
+                location.reload();
+            }
+            alert("The app has been reset");
         }
+
     }
     function checkName(userName,language){
         var regExVal = /^[A-Za-z|\s|-]+$/
-        //alert();
+        
         if(userName.length === 0 && language.length === 0){
             return "Please provide a name and select a language";
         }        
