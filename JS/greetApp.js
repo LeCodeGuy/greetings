@@ -40,11 +40,7 @@ function greetMe (){
         return counter;
     }
     
-    function clearCount() {
-        counter = 0;
-        //localStorage['count'] = counter;
-        // localStorage['count'] = counter;
-        
+    function clearCount() {        
         localStorage.clear();
         if (window.location.href.indexOf("greetings/index.html") > -1) {
             location.reload();
