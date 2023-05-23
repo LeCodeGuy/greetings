@@ -1,8 +1,9 @@
 function greetMe (){
     let message = "";
-    let counter = 0;
-    let localStoreVal = JSON.parse(localStorage.getItem('namesGreeted'));
-    var namesGreeted = localStoreVal || {};
+    let localStoreCountVal = localStorage.getItem('count');
+    let localStoreGreetedVal = JSON.parse(localStorage.getItem('namesGreeted'));
+    var namesGreeted = localStoreGreetedVal || {};
+    var counter = localStoreCountVal || 0;
 
     function greet(userName,language){
         
@@ -28,13 +29,13 @@ function greetMe (){
                 counter++;
                 //add an entry for the user that was greeted in the Object Map
                 namesGreeted[userName] = 1;
+                localStorage['count'] = counter;
             } else {
                 // update the counter for a specific username
                 namesGreeted[userName]++;
             }
         
         //store how many times a user was greeted.
-        localStorage['count'] = counter;
         localStorage['namesGreeted'] = JSON.stringify(namesGreeted);
 
         return counter;
